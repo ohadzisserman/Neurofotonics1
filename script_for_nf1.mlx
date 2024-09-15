@@ -1,0 +1,18 @@
+dataFile = 'FN_032_V1_Postdose1_Nback.mat'; 
+SDS = 3;  % Source-Detector Separation in cm
+tissueType = 'adult_forearm';  % Or 'adult_head', 'baby_head', etc.
+
+% File paths for additional data
+extinctionCoefficientsFile = 'ExtinctionCoefficientsData.csv';
+DPFperTissueFile = 'DPFpertissue.txt';
+relDPFfile = 'RelativeDPFCoefficients.csv';
+
+plotChannelIdx = [1, 2];  % Plot first two channels
+
+% Call the CalcNIRS function
+[dHbR, dHbO, fig] = CalcNIRS(dataFile, SDS, tissueType, extinctionCoefficientsFile, DPFperTissueFile, relDPFfile, plotChannelIdx);
+
+% Display results
+disp('Calculation completed.');
+disp(['Size of dHbR: ', num2str(size(dHbR))]);
+disp(['Size of dHbO: ', num2str(size(dHbO))]);
